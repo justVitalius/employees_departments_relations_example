@@ -1,0 +1,53 @@
+<!doctype HTML>
+<html>
+<head>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    .thumbnail{
+      width: 100%;
+    }
+  </style>
+</head>
+<body ng-app="App">
+  <div class="container">
+    <div class="row" ng-controller='EmployeesDepartmentsController'>
+      <div class="col-sm-12">
+        <h1>Employees Departments Relations</h1>
+      </div>
+      <div class="col-sm-4">
+        <div class="media" ng-repeat="department in departments">
+          <div class="media-left">
+            <a href="#">
+              <img class="media-object" ng-src="{{department.imageUrl}}" style="width: 100px;">
+            </a>
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading">Employees list</h4>
+            <div ng-repeat="employee in department.employees()">
+              <p ng-bind="employee.name">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-8">
+        <div class="row">
+          <div class="col-sm-2" ng-repeat="employee in employees">
+            <div class="thumbnail" style="height: 200px;">
+              <img ng-src='{{employee.imageUrl}}' class="thumbnail"/>
+              <div class="caption">
+                <p ng-bind='employee.name'></p>
+                <p class='badge' ng-bind='employee.department().name'></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  <script type="text/javascript" src="/public/app.js"></script>
+</body>
+</html>
